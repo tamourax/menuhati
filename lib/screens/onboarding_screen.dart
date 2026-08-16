@@ -3,7 +3,6 @@ import 'package:menuhati/screens/home_screen.dart';
 
 /// Data model representing each onboarding page item.
 class OnboardingItem {
-  final String topLabel;
   final String imageUrl;
   final String title;
   final String description;
@@ -11,7 +10,6 @@ class OnboardingItem {
   final bool showSkip;
 
   const OnboardingItem({
-    required this.topLabel,
     required this.imageUrl,
     required this.title,
     required this.description,
@@ -40,7 +38,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final List<OnboardingItem> _pages = const [
     OnboardingItem(
-      topLabel: 'Onboarding',
       imageUrl:
           'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop',
       title: 'Discover Cafés',
@@ -50,22 +47,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       showSkip: false,
     ),
     OnboardingItem(
-      topLabel: 'Onboarding: Explore the Menu',
       imageUrl:
           'https://images.unsplash.com/photo-1509785307050-d4066910ec1e?q=80&w=1000&auto=format&fit=crop',
       title: 'Explore the Menu',
-      description:
-          'Browse coffee, cold drinks,\ndesserts, and more.',
+      description: 'Browse coffee, cold drinks,\ndesserts, and more.',
       buttonText: 'Next',
       showSkip: true,
     ),
     OnboardingItem(
-      topLabel: 'Onboarding: Pick Your Favorite',
       imageUrl:
           'https://images.unsplash.com/photo-1534778191329-7d35368a1f89?q=80&w=1000&auto=format&fit=crop',
       title: 'Pick Your Favorite',
-      description:
-          'Find something you love and order\nit easily.',
+      description: 'Find something you love and order\nit easily.',
       buttonText: 'Get Started',
       showSkip: false,
     ),
@@ -90,9 +83,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   void _navigateToHome() {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => const MyHomePage(),
-      ),
+      MaterialPageRoute(builder: (context) => const MyHomePage()),
     );
   }
 
@@ -103,29 +94,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // Top label area
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 20.0,
-                right: 20.0,
-                top: 14.0,
-                bottom: 12.0,
-              ),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  _pages[_currentPage].topLabel,
-                  style: const TextStyle(
-                    color: _topLabelGray,
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: -0.2,
-                  ),
-                ),
-              ),
-            ),
-
-            // PageView content
+          
             Expanded(
               child: PageView.builder(
                 controller: _pageController,
@@ -191,9 +160,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         return SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
           child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: constraints.maxHeight,
-            ),
+            constraints: BoxConstraints(minHeight: constraints.maxHeight),
             child: IntrinsicHeight(
               child: Column(
                 children: [
@@ -218,28 +185,29 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               width: double.infinity,
                               loadingBuilder:
                                   (context, child, loadingProgress) {
-                                if (loadingProgress == null) return child;
-                                return Container(
-                                  color: const Color(0xFFEBE6E0),
-                                  child: Center(
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 2.0,
-                                      valueColor:
-                                          const AlwaysStoppedAnimation<Color>(
-                                        _darkBrown,
-                                      ),
-                                      value: loadingProgress
-                                                  .expectedTotalBytes !=
-                                              null
-                                          ? loadingProgress
-                                                  .cumulativeBytesLoaded /
+                                    if (loadingProgress == null) return child;
+                                    return Container(
+                                      color: const Color(0xFFEBE6E0),
+                                      child: Center(
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2.0,
+                                          valueColor:
+                                              const AlwaysStoppedAnimation<
+                                                Color
+                                              >(_darkBrown),
+                                          value:
                                               loadingProgress
-                                                  .expectedTotalBytes!
-                                          : null,
-                                    ),
-                                  ),
-                                );
-                              },
+                                                      .expectedTotalBytes !=
+                                                  null
+                                              ? loadingProgress
+                                                        .cumulativeBytesLoaded /
+                                                    loadingProgress
+                                                        .expectedTotalBytes!
+                                              : null,
+                                        ),
+                                      ),
+                                    );
+                                  },
                               errorBuilder: (context, error, stackTrace) {
                                 return Container(
                                   color: const Color(0xFFEBE6E0),
@@ -265,7 +233,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       vertical: 4.0,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: Colors.black.withValues(alpha: 0.28),
+                                      color: Colors.black.withValues(
+                                        alpha: 0.28,
+                                      ),
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: const Text(

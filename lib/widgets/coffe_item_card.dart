@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CoffeeItemCard extends StatelessWidget {
-  const CoffeeItemCard({super.key});
+  final String image;
+  final String name;
+  final String description;
+  final String price;
+
+  const CoffeeItemCard({
+    super.key,
+    required this.image,
+    required this.name,
+    required this.description,
+    required this.price,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,33 +28,33 @@ class CoffeeItemCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Coffee Image
           ClipRRect(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(18),
               bottomLeft: Radius.circular(18),
             ),
             child: Image.asset(
-              'assets/png/iced_spanish_latte.jpg',
+              image,
               width: 120,
               fit: BoxFit.cover,
             ),
           ),
 
-          // Coffee Information
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 6,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Name + Favorite
                   Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: Text(
-                          'Iced Spanish Latte',
-                          style: TextStyle(
+                          name,
+                          style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
@@ -54,30 +65,39 @@ class CoffeeItemCard extends StatelessWidget {
                         onPressed: () {},
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
-                        icon: const Icon(Icons.favorite_border, size: 28),
+                        icon: const Icon(
+                          Icons.favorite_border,
+                          size: 28,
+                        ),
                       ),
                     ],
                   ),
 
                   const SizedBox(height: 8),
 
-                  // Description
-                  const Text(
-                    'A rich blend of espresso, cold milk, and sweetened',
+                  Text(
+                    description,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 14, color: Colors.grey),
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                    ),
                   ),
-                  SizedBox(height: 8),
-                  Divider(thickness: 1, color: Color(0xffE2E2E2)),
 
-                  // Price + Add Button
+                  const SizedBox(height: 8),
+
+                  const Divider(
+                    thickness: 1,
+                    color: Color(0xffE2E2E2),
+                  ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        '\$5.50',
-                        style: TextStyle(
+                      Text(
+                        price,
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),

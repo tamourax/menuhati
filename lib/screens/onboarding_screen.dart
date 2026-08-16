@@ -33,12 +33,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   // Exact Figma color palette & typography specifications
   static const Color _bgScreen = Color(0xFFF7F5F2);
-  static const Color _darkBrown = Color(0xFF33231D); // #33231D from Figma
+  static const Color _darkBrown = Color(0xFF33231D); // #33231D من فيجما
   static const Color _grayText = Color(0xFF7A736E);
   static const Color _topLabelGray = Color(0xFF8C8681);
   static const Color _indicatorInactive = Color(0xFFE2DED9);
 
-  // High quality curated network images matching the exact reference
   final List<OnboardingItem> _pages = const [
     OnboardingItem(
       topLabel: 'Onboarding',
@@ -198,11 +197,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: IntrinsicHeight(
               child: Column(
                 children: [
-                  // Image container: 0px radius at top, 48px radius at bottom only
+                  // Image container: بدون بادنج نهائياً مع حواف دائرية 48px من الأسفل فقط
                   Expanded(
                     flex: 12,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: SizedBox(
+                      width: double.infinity,
                       child: ClipRRect(
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.zero,
@@ -216,6 +215,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             Image.network(
                               item.imageUrl,
                               fit: BoxFit.cover,
+                              width: double.infinity,
                               loadingBuilder:
                                   (context, child, loadingProgress) {
                                 if (loadingProgress == null) return child;
@@ -306,7 +306,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fontFamilyFallback: ['serif', 'Georgia'],
                             fontWeight: FontWeight.w700,
                             fontSize: 32.0,
-                            height: 40.0 / 32.0, // Line height = 40px
+                            height: 40.0 / 32.0,
                             letterSpacing: 0.0,
                           ),
                         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:menuhati/screens/onboarding_screen.dart';
+import 'package:menuhati/screens/splash_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFFF7F5F2),
         useMaterial3: true,
       ),
-      home: const OnboardingScreen(),
+      home:  SplashScreen(),
     );
   }
 }

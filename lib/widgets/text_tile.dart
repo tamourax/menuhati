@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextTile extends StatelessWidget {
-  const TextTile({super.key});
+  final String title;
+  final String subTitle;
+
+  const TextTile({
+    super.key,
+    required this.title,
+    required this.subTitle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +20,7 @@ class TextTile extends StatelessWidget {
           width: 342,
           height: 40,
           child: Text(
-            'Find your coffee ☕',
+            title,
             style: GoogleFonts.playfairDisplay(
               fontSize: 32,
               fontWeight: FontWeight.w700,
@@ -28,7 +35,7 @@ class TextTile extends StatelessWidget {
           width: 342,
           height: 24,
           child: Text(
-            'Discover artisanal roasters and local spots.',
+            subTitle,
             style: GoogleFonts.inter(
               fontSize: 16,
               fontWeight: FontWeight.w400,

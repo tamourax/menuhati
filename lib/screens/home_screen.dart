@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:menuhati/screens/categories_screen.dart';
 import 'package:menuhati/widgets/coffe_card_gridveiw.dart';
 import 'package:menuhati/widgets/custom_app_bar.dart';
 import 'package:menuhati/widgets/text_tile.dart';
@@ -41,16 +42,17 @@ class MyHomePage extends StatelessWidget {
                           left: 0,
                           right: 0,
                         ),
-                        // onItemTap: (item) {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => CoffeeDetailsPage(
-                        //         coffee: item,
-                        //       ),
-                        //     ),
-                        //   );
-                        // },
+                        onItemTap: (item) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CoffeeDetailsPage(
+                                cafeName: item.title,
+                                cafedistance: item.distance,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],

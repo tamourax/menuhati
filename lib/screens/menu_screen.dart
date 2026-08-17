@@ -14,24 +14,26 @@ class MenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          AppHeader(
-            showBackButton: true,
-            showCartIcon: true,
-            title: 'Menuhati',
-          ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            AppHeader(
+              showBackButton: true,
+              showCartIcon: true,
+              title: 'Menuhati',
+            ),
 
-          TextTile(
-            title: title,
-            subTitle:
-                'Chilled to perfection. Our iced coffee selection is crafted to bring out the delicate notes of our roasted beans, perfect for a warm afternoon.',
-          ),
+            TextTile(
+              title: title,
+              subTitle:
+                  'Chilled to perfection. Our iced coffee selection is crafted to bring out the delicate notes of our roasted beans, perfect for a warm afternoon.',
+            ),
 
-          const Expanded(
-            child: CoffeeItemCardListView(),
-          ),
-        ],
+            const Expanded(
+              child: CoffeeItemCardListView(),
+            ),
+          ],
+        ),
       ),
     );
   }

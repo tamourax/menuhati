@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:menuhati/screens/check_test_screen.dart';
 
 class CoffeeItemCard extends StatelessWidget {
   final String image;
@@ -111,7 +112,14 @@ class CoffeeItemCard extends StatelessWidget {
                           shape: BoxShape.circle,
                         ),
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CheckoutScreen(),
+                              ),
+                            );
+                          },
                           padding: EdgeInsets.zero,
                           icon: const Icon(
                             Icons.add,

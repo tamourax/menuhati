@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:menuhati/screens/onboarding_screen.dart';
 import 'package:menuhati/screens/splash_screen.dart';
 
 class MyApp extends StatelessWidget {

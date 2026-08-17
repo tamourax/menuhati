@@ -4,11 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 class TextTile extends StatelessWidget {
   final String title;
   final String subTitle;
+  final TextAlign textAlign;
 
   const TextTile({
     super.key,
     required this.title,
     required this.subTitle,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -21,6 +23,7 @@ class TextTile extends StatelessWidget {
           height: 40,
           child: Text(
             title,
+            textAlign: textAlign,
             style: GoogleFonts.playfairDisplay(
               fontSize: 32,
               fontWeight: FontWeight.w700,
@@ -36,6 +39,7 @@ class TextTile extends StatelessWidget {
           height: 24,
           child: Text(
             subTitle,
+            textAlign: textAlign,
             style: GoogleFonts.inter(
               fontSize: 16,
               fontWeight: FontWeight.w400,
